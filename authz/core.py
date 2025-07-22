@@ -1,17 +1,16 @@
 import requests
 
-class Authz:
-    def __init__(self, api_url="https://creativedemon.pythonanywhere.com/verify"):
-        self.api_url = api_url
+API_URL = "https://creativedemon.pythonanywhere.com"
 
-    def verify(self, custom_id: str, bot_token: str, bot_username: str) -> bool:
-        try:
-            res = requests.post(self.api_url, json={
-                "custom_id": custom_id,
-                "bot_token": bot_token,
-                "bot_username": bot_username
-            })
-            return res.json().get("authorized", False)
-        except Exception as e:
-            print(f"[Authz] Error: {e}")
-            return False
+def id(custom_id: str, bot_token: str = "", bot_username: str = "") -> bool:
+    """Check if a bot is authorized."""
+    payload = {
+        "custom_id": custom_id,
+        "bot_token": bot_token,
+        "bot_username": bot_username,
+    }
+    try:
+        res = requests.post(f"{API_URL}/verify", json=payload, timeout=10)
+        return res.status_code == 200 and res.json().get("authorized") is True
+    except Exception:
+        return False

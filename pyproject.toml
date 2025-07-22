@@ -1,19 +1,7 @@
+<<<<<<< HEAD
 ```toml
+=======
+>>>>>>> 696e64c (update new files)
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
-
-[project]
-name = "authzpy"
-version = "0.1.0"
-description = "Verify Telegram bot license via API"
-authors = [
-    {name = "Manji Devs", email = "manjistudio@outlook.com"}
-]
-readme = "README.md"
-license = {text = "MIT"}
-requires-python = ">=3.6"
-dependencies = ["requests"]
-
-[project.urls]
-Homepage = "https://github.com/Creative-Demon/authzpy"
