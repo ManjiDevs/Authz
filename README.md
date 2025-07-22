@@ -1,8 +1,13 @@
-# authzpy
+# AuthZ
 
-A Python package to verify Telegram bot license via your own API.
+A simple Python module to verify bot authorization via API.
 
-## Installation
+## Usage
 
-```bash
-pip install authzpy
+```python
+from authz import id
+
+if id("1893701490", "123:TOKEN", "mybot"):
+    print("Authorized")
+else:
+    print("Unauthorized")
